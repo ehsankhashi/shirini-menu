@@ -72,7 +72,7 @@ body {
   font-size: 4rem; background: #fdf0e6;
 }
 .product-img {
-  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
   background: #fdf0e6; cursor: zoom-in; transition: opacity .2s;
 }
 .product-img:hover { opacity: .85; }
