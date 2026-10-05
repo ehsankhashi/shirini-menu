@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شیرینی‌سرا | منوی دیجیتال</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+<link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <h1>🧁 شیرینی‌سرا</h1>
+    <p>تازه، خونگی و با عشق — سفارش آنلاین کیک و شیرینی</p>
+    <div class="hero-badges">
+      <span>🎂 کیک</span>
+      <span>🍰 چیزکیک</span>
+      <span>🍪 کوکی</span>
+      <span>🍮 دسر</span>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <nav class="filters" id="filters" aria-label="دسته‌بندی محصولات">
+    <button class="filter-btn active" data-cat="all">همه</button>
+    <button class="filter-btn" data-cat="cake">کیک</button>
+    <button class="filter-btn" data-cat="cheesecake">چیزکیک</button>
+    <button class="filter-btn" data-cat="cookie">کوکی</button>
+    <button class="filter-btn" data-cat="dessert">دسر</button>
+  </nav>
+  <div class="search-row">
+    <div class="search-box">
+      <input type="search" id="searchInput" placeholder="🔍 جستجو در منو..." aria-label="جستجو در منو">
+    </div>
+    <div class="sort-box">
+      <label for="sortSelect">↕ مرتب‌سازی:</label>
+      <select id="sortSelect" aria-label="مرتب‌سازی محصولات">
+        <option value="newest" selected>جدیدترین</option>
+        <option value="bestseller">پرفروش‌ترین</option>
+        <option value="views">پربازدیدترین</option>
+        <option value="priceAsc">کمترین قیمت</option>
+        <option value="priceDesc">بیشترین قیمت</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<main class="menu" id="menu" aria-live="polite"></main>
+
+<div class="cart-bar" id="cartBar" hidden>
+  <button class="cart-btn" id="cartBtn" onclick="openCart()" aria-label="باز کردن سبد خرید">
+    🛒 سبد خرید (<span id="cartCount">۰</span>) — <span id="cartTotal">۰</span> تومان
+  </button>
+</div>
+
+<div class="modal" id="cartModal" onclick="modalBackdropClose(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <div class="modal-head">
+      <h2 id="cartTitle">سبد سفارش شما</h2>
+      <button class="close-btn" onclick="closeCart()" aria-label="بستن سبد خرید">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-summary" id="cartSummary"></div>
+    <div class="discount-row">
+      <input type="text" id="discountCode" placeholder="کد تخفیف" aria-label="کد تخفیف">
+      <button type="button" class="apply-btn" onclick="applyDiscount()">اعمال</button>
+    </div>
+    <form id="orderForm" onsubmit="submitOrder(event)">
+      <input type="text" id="custName" placeholder="نام شما" required aria-label="نام شما">
+      <input type="tel" id="custPhone" placeholder="شماره موبایل (۰۹xxxxxxxxx)" required
+             pattern="09\d{9}" inputmode="numeric" aria-label="شماره موبایل">
+      <div class="delivery-toggle" role="radiogroup" aria-label="روش تحویل">
+        <label><input type="radio" name="delivery" value="پیک" checked onchange="toggleAddress()"> 🛵 پیک</label>
+        <label><input type="radio" name="delivery" value="حضوری" onchange="toggleAddress()"> 🏬 تحویل حضوری</label>
+      </div>
+      <input type="text" id="custAddress" placeholder="آدرس تحویل" aria-label="آدرس تحویل">
+      <div class="field-label">📅 تاریخ تحویل (شمسی):</div>
+      <div class="datetime-row">
+        <select id="jDay" aria-label="روز"></select>
+        <select id="jMonth" aria-label="ماه"></select>
+        <select id="jYear" aria-label="سال"></select>
+      </div>
+      <div class="field-label">⏰ ساعت تحویل:</div>
+      <div class="datetime-row time-row">
+        <select id="jHour" aria-label="ساعت"></select>
+        <span class="time-sep">:</span>
+        <select id="jMin" aria-label="دقیقه"></select>
+      </div>
+      <input type="hidden" id="deliverDate">
+      <input type="hidden" id="deliverTime">
+      <textarea id="custNote" placeholder="توضیحات سفارش..." aria-label="توضیحات سفارش"></textarea>
+      <div class="channels-label">روش ارسال سفارش:</div>
+      <div class="channels">
+        <button type="submit" class="ch-btn whatsapp">واتساپ</button>
+        <button type="button" class="ch-btn telegram" onclick="submitOrder(event,'telegram')">تلگرام</button>
+        <button type="button" class="ch-btn eitaa" onclick="submitOrder(event,'eitaa')">ایتا</button>
+        <button type="button" class="ch-btn bale" onclick="submitOrder(event,'bale')">بله</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lb-close" onclick="closeLightbox(event)" aria-label="بستن نمایش تصویر">✕</button>
+  <img id="lightboxImg" src="" alt="نمایش بزرگ محصول">
+  <p id="lightboxCaption"></p>
+</div>
+
+<footer>
+  <p>📍 تهران — ⏰ هر روز ۹ تا ۲۱</p>
+  <p>📞 ۰۹۱۲۱۲۳۴۵۶۷ |
+    <a class="ig-link" href="https://instagram.com/shirinisara" target="_blank" rel="noopener" aria-label="اینستاگرام شیرینی‌سرا">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      <span dir="ltr">@shirinisara</span>
+    </a>
+  </p>
+  <p class="small">© ۱۴۰۵ شیرینی‌سرا</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
