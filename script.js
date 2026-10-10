@@ -1,7 +1,7 @@
 // ================= ویرایش فروشگاه =================
 // آدرس سرور دریافت سفارش (پوشه‌ی server همین پروژه). مثال: "https://order.example.ir"
 // سفارش‌ها به این سرور ارسال می‌شوند و سرور آن‌ها را برای فروشگاه (بله/تلگرام) می‌فرستد.
-const ORDER_API = "https://shirinisara-server.onrender.com/";
+const ORDER_API = "https://shirini-menu.onrender.com";
 // کدهای تخفیف: درصد
 const DISCOUNTS = { "WELCOME10": 10, "SWEET20": 20 };
 // حداقل زمان سفارش (ساعت قبل از تحویل) — برای کیک ۲۴ ساعت
