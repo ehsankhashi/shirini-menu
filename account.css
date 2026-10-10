@@ -1,0 +1,62 @@
+/* ===== حساب کاربری ===== */
+.account-btn {
+  position: absolute; top: 14px; left: 14px; z-index: 3;
+  background: rgba(255,255,255,.2); color: #fff; border: 1px solid rgba(255,255,255,.5);
+  border-radius: 20px; padding: 7px 16px; cursor: pointer;
+  font-family: inherit; font-size: .85rem; backdrop-filter: blur(4px);
+  max-width: 60vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  transition: background .2s;
+}
+.account-btn:hover { background: rgba(255,255,255,.35); }
+.hero { position: relative; }
+
+#accountModal .modal-box { max-width: 440px; }
+#accountBody input, #accountBody textarea {
+  width: 100%; padding: 10px 12px; margin-bottom: 8px;
+  border: 1px solid #e8c8a8; border-radius: 8px; font-family: inherit; font-size: .9rem;
+}
+#accountBody textarea { resize: vertical; }
+#accountBody input:focus, #accountBody textarea:focus { outline: 2px solid #d4713b; }
+
+.ac-hint { font-size: .85rem; color: #8a7364; margin-bottom: 12px; line-height: 1.9; }
+.ac-note { font-size: .75rem; color: #8a7364; margin-top: 10px; text-align: center; }
+.ac-error { display: none; color: #d43b3b; font-size: .82rem; margin-bottom: 8px; }
+.ac-ok { color: #2e8b57; font-size: .85rem; min-height: 1.2em; margin-bottom: 4px; }
+.ac-primary {
+  width: 100%; background: #a8442a; color: #fff; border: none; border-radius: 10px;
+  padding: 10px; font-family: inherit; font-size: .9rem; cursor: pointer; margin-top: 4px;
+}
+.ac-primary:hover { background: #8f3820; }
+.ac-link {
+  background: none; border: none; color: #a8442a; cursor: pointer;
+  font-family: inherit; font-size: .82rem; padding: 8px 4px; text-decoration: underline;
+}
+.ac-link.danger { color: #d43b3b; }
+.ac-row { display: flex; justify-content: space-between; margin-top: 6px; }
+.ac-phone { background: #fdf0e6; border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; font-size: .9rem; }
+
+.ac-tabs { display: flex; gap: 6px; margin-bottom: 14px; background: #fdf0e6; border-radius: 10px; padding: 4px; }
+.ac-tabs button {
+  flex: 1; border: none; background: transparent; padding: 8px 6px; border-radius: 8px;
+  font-family: inherit; font-size: .85rem; color: #a8442a; cursor: pointer;
+}
+.ac-tabs button.active { background: #fff; font-weight: bold; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+
+.ac-empty { text-align: center; color: #999; padding: 30px 0; }
+.ac-order { border: 1px solid #f0dcc8; border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
+.ac-order-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; font-size: .9rem; }
+.ac-order-meta { font-size: .78rem; color: #8a7364; }
+.ac-order ul { margin: 6px 18px 6px 0; font-size: .85rem; line-height: 1.8; }
+.ac-order li small { color: #8a7364; }
+.ac-order-total { text-align: left; font-weight: bold; color: #a8442a; font-size: .9rem; }
+.ac-status { font-size: .72rem; padding: 3px 10px; border-radius: 12px; color: #fff; }
+.st-pending { background: #e67e22; }
+.st-confirmed { background: #2a7fa8; }
+.st-delivered { background: #2e8b57; }
+.st-canceled { background: #777; }
+
+.ac-toast {
+  position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 30;
+  background: #2e8b57; color: #fff; padding: 12px 20px; border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25); font-size: .9rem; max-width: 90vw; text-align: center;
+}
